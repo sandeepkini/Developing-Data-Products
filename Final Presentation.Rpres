@@ -1,0 +1,46 @@
+Understanding Car Characteristics Affecting MPG
+========================================================
+author: Sandeep 
+date: 
+
+Exploring mtcars 
+========================================================
+
+The mtcars database provides information regarding various vehicles, allowing for interesting exploration. 
+
+
+```{r}
+data(mtcars)
+head(mtcars,1)
+```
+
+Being from the Pacific Northwest, I'm immediately drawn to exploring how miles per gallon might be affected by multiple varriables. The two right away that strike my eye are weight and cylinders. 
+
+Weight vs. Cylinders
+========================================================
+- Both weight and number of cylinders can be valueable opportunities to review the data
+
+- For this reason, I thought it would be interesting to see how miles per gallon might be related while looking at data points 
+
+- In the shiny diagram, you can choose the number of cylinders and review the plot of weight vs. mpg 
+
+- Through this method, we can see that their may be a correlation between the number of cylinders and car weight 
+
+
+MPG vs. Weight for 4 Cylinder Cars
+========================================================
+- The following plot shows miles per gallon per weight, with different colors identifying the various cylinders. 
+- However, as you can see, separating by cylinder would allow us to develop a much better predictors of miles per gallon based on weight, as we would have separate linear regression models
+
+```{r, echo=FALSE}
+library(ggplot2)
+ qplot(wt, mpg, data=mtcars,colour=cyl,xlab="Weight (Thousands of Pounds)", ylab="Miles per Gallon") + geom_smooth(method = lm, se = FALSE, colour= "black") + ylim(10,35) + xlim(1,6)
+```
+
+
+Conclusions
+========================================================
+- By separating vehicles by the number of cylinders, we will be able to more accurately predict the miles per gallon based on weight 
+- In addition, by viewing these new graphs in a series, we can see how these trends differ by the number of miles per gallon 
+- Furthrer research should explore other trends which should be included in this analysis 
+
